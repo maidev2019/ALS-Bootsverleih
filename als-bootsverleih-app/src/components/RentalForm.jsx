@@ -218,13 +218,17 @@ export default function RentalForm({ formData, setFormData }) {
               updateGroupField("ausstattung", "verbandskasten", e.target.checked)
             }
           />
-          <CheckboxField
-            label="Schwimmwesten"
-            checked={formData.ausstattung.schwimmwesten}
+        <div className="field">
+          <label>Schwimmwesten (Anzahl)</label>
+          <input
+            type="number"
+            min="0"
+            value={formData.ausstattung.schwimmwesten}
             onChange={(e) =>
-              updateGroupField("ausstattung", "schwimmwesten", e.target.checked)
+              updateGroupField("ausstattung", "schwimmwesten", e.target.value)
             }
           />
+        </div>
           <CheckboxField
             label="Bootshaken"
             checked={formData.ausstattung.bootshaken}
@@ -253,13 +257,17 @@ export default function RentalForm({ formData, setFormData }) {
               updateGroupField("ausstattung", "badeleiter", e.target.checked)
             }
           />
-          <CheckboxField
-            label="Leinen"
-            checked={formData.ausstattung.leinen}
+        <div className="field">
+          <label>Leinen (Anzahl)</label>
+          <input
+            type="number"
+            min="0"
+            value={formData.ausstattung.leinen}
             onChange={(e) =>
-              updateGroupField("ausstattung", "leinen", e.target.checked)
+              updateGroupField("ausstattung", "leinen", e.target.value)
             }
           />
+        </div>
           <CheckboxField
             label="Anker"
             checked={formData.ausstattung.anker}

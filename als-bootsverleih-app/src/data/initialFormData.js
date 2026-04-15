@@ -42,12 +42,12 @@ export const initialFormData = {
 
   ausstattung: {
     verbandskasten: false,
-    schwimmwesten: false,
+    schwimmwesten: "0",
     bootshaken: false,
     paddel: false,
     polster: false,
     badeleiter: false,
-    leinen: false,
+    leinen: "0",
     anker: false,
     ankerleuchte: false,
     usb: false,

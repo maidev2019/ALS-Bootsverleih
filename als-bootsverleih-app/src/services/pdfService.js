@@ -1,5 +1,26 @@
 import { jsPDF } from "jspdf";
 
+function loadImageAsDataUrl(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+
+      resolve(canvas.toDataURL("image/png"));
+    };
+
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
 function addSectionTitle(doc, title, y) {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(14);
@@ -105,13 +126,25 @@ export async function generatePdf(formData) {
     format: "a4",
   });
 
+  let logoDataUrl = null;
+
+  try {
+    logoDataUrl = await loadImageAsDataUrl("./logo.png");
+  } catch (error) {
+    console.warn("Logo konnte nicht geladen werden:", error);
+  }
   let y = 20;
 
+  if (logoDataUrl) {
+    doc.addImage(logoDataUrl, "PNG", 80, 12, 55, 15);
+  }
+
+  
   doc.setFont("helvetica", "bold");
   doc.setFontSize(18);
-  doc.text("Miet- und Übergabeprotokoll", 15, y);
-  y += 12;
-
+  doc.text("Miet- und Übergabeprotokoll", 60, 37);
+  
+  y = 52;
   y = addSectionTitle(doc, "Metadaten", y);
   y = addLine(doc, "Objekttyp", formData.meta.objektTyp === "boot" ? "Boot" : "Floß", y);
   y = addLine(doc, "Objektnummer", formData.meta.objektNummer || "-", y);
