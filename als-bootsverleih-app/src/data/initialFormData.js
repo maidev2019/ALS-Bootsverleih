@@ -60,6 +60,7 @@ export const initialFormData = {
     vorfahrtsrecht: false,
     verkehrszeichen: false,
     beleuchtung: false,
+    unwetter: false,
   },
 
   motor: {

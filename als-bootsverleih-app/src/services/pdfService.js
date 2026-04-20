@@ -190,6 +190,7 @@ export async function generatePdf(formData) {
     vorfahrtsrecht: "Vorfahrtsrecht",
     verkehrszeichen: "Schiffsverkehrszeichen",
     beleuchtung: "Beleuchtung",
+    unwetter: "Unwetter",
   }, y);
 
   y = ensurePageSpace(doc, y, 50);

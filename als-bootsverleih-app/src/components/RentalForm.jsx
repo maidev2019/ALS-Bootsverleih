@@ -341,6 +341,13 @@ export default function RentalForm({ formData, setFormData }) {
               updateGroupField("belehrung", "beleuchtung", e.target.checked)
             }
           />
+          <CheckboxField
+            label="Unwetter"
+            checked={formData.belehrung.unwetter}
+            onChange={(e) =>
+              updateGroupField("belehrung", "unwetter", e.target.checked)
+            }
+          />
         </div>
       </Section>
 
